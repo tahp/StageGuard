@@ -1,0 +1,23 @@
+{
+  "name": "StageGuard",
+  "version": "0.1.0",
+  "description": "A lightweight staged escalation state machine for embedded systems.",
+  "keywords": [
+    "state-machine",
+    "timer",
+    "alarm",
+    "escalation",
+    "embedded"
+  ],
+  "authors": [
+    {
+      "name": "Pugs"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tahp/StageGuard.git"
+  },
+  "frameworks": "*",
+  "platforms": "*"
+}

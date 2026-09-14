@@ -1,0 +1,16 @@
+# Compiled binaries
+test
+*.o
+*.out
+
+# PlatformIO
+.pio/
+.vscode/
+
+# Arduino build artifacts
+build/
+
+# OS/editor junk
+.DS_Store
+*.swp
+*~
