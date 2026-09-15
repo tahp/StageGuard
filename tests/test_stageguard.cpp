@@ -50,6 +50,20 @@ int main() {
     assert(guard.getStage() == 0);
     assert(!guard.isActive());
 
+    // Signal recovery during grace period should preserve the event.
+    guard.reset();
+
+    guard.update(true, 200000);
+    guard.update(true, 216000);
+    assert(guard.getStage() == 2);
+
+    guard.update(false, 217000);
+    guard.update(false, 219000);
+
+    guard.update(true, 220000);
+    assert(guard.getStage() == 3);
+    assert(guard.isActive());
+
     // Invalid thresholds should be rejected.
     assert(!guard.setStageThresholds(
         30000,
