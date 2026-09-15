@@ -45,8 +45,12 @@ int main() {
     assert(stageChanges[2] == 3);
     assert(stageChanges[3] == 4);
     assert(stageChanges[4] == 5);
+    guard.reset();
+    assert(stageChanges.size() == 6);
+    assert(stageChanges[5] == 0);
 
     // Grace-period behavior.
+
     guard.reset();
 
     guard.update(true, 100000);
