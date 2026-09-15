@@ -1,9 +1,15 @@
 #include <cassert>
 #include <iostream>
+#include <vector>
 #include "StageGuard.h"
 
 int main() {
     StageGuard guard;
+    std::vector<uint8_t> stageChanges;
+
+    guard.setStageCallback([&stageChanges](uint8_t stage) {
+        stageChanges.push_back(stage);
+    });
 
     // Valid thresholds should be accepted.
     assert(guard.setStageThresholds(
@@ -33,6 +39,12 @@ int main() {
 
     guard.update(true, 45000);
     assert(guard.getStage() == 5);
+    assert(stageChanges.size() == 5);
+    assert(stageChanges[0] == 1);
+    assert(stageChanges[1] == 2);
+    assert(stageChanges[2] == 3);
+    assert(stageChanges[3] == 4);
+    assert(stageChanges[4] == 5);
 
     // Grace-period behavior.
     guard.reset();
