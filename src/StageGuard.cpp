@@ -14,17 +14,26 @@ StageGuard::StageGuard()
       graceRunning_(false) {
 }
 
-void StageGuard::setStageThresholds(
+bool StageGuard::setStageThresholds(
     uint32_t stage2Ms,
     uint32_t stage3Ms,
     uint32_t stage4Ms,
     uint32_t stage5Ms
 ) {
+    if (!(stage2Ms < stage3Ms &&
+          stage3Ms < stage4Ms &&
+          stage4Ms < stage5Ms)) {
+        return false;
+    }
+
     stage2Ms_ = stage2Ms;
     stage3Ms_ = stage3Ms;
     stage4Ms_ = stage4Ms;
     stage5Ms_ = stage5Ms;
+
+    return true;
 }
+
 
 void StageGuard::setGracePeriod(uint32_t graceMs) {
     graceMs_ = graceMs;

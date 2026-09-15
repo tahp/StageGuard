@@ -9,7 +9,7 @@ public:
 
     StageGuard();
 
-    void setStageThresholds(
+    bool setStageThresholds(
         uint32_t stage2Ms,
         uint32_t stage3Ms,
         uint32_t stage4Ms,
