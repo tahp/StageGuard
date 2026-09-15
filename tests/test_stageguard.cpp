@@ -24,7 +24,8 @@ int main() {
     // Stage boundaries.
     guard.update(true, 0);
     assert(guard.getStage() == 1);
-
+    assert(guard.getActiveDuration(0) == 0);
+    assert(guard.getActiveDuration(5000) == 5000);
     guard.update(true, 14999);
     assert(guard.getStage() == 1);
 
@@ -48,6 +49,7 @@ int main() {
     guard.reset();
     assert(stageChanges.size() == 6);
     assert(stageChanges[5] == 0);
+    assert(guard.getActiveDuration(50000) == 0);
 
     // Grace-period behavior.
 
